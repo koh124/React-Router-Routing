@@ -1,0 +1,38 @@
+★React-routerとは
+Reactで行うルーティングのこと
+
+★ビルド
+npm init -y
+npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader \
+        webpack webpack-cli webpack-dev-server \
+        react react-dom \
+        react-router react-router-dom \
+        terser-webpack-plugin path
+
+・JSX記法ではタグの属性名にclassキーワードを使えない（予約語のため）
+これをnpm installすれば、ちゃんとコンパイルしてくれる
+babel-plugin-react-html-attrs
+~webpack.config.js~
+options: {
+  plugins: ['react-html-attrs']
+}
+
+installしない場合は、classNameという属性でclassを指定できる
+
+★v6で死んだこと
+・exactキーワードの廃止
+exactキーワードは、ユーザーがアクセスしたパスが厳密に一致した場合のみコンポーネントを表示する
+exactがないと、/archivesや/settingsにもFeaturedコンポーネントが表示されてしまう
+
+★未消化
+・v6でのnavigate、history管理
+ブラウザバックしたときの画面遷移の履歴を残すものらしい
+push, popで履歴を残すか残さないか選べる
+
+・GETパラメータを渡す
+archive/:articleみたいな
+・GETパラメータを正規表現で渡す
+・クエリストリングを渡す
+archive/?a_id=1&u_id=1 これ
+こっちの方がGETパラメータって普段呼んでるけど、上とは区別される
+・ボタンがactiveのときのclassの指定（activeClassName）
